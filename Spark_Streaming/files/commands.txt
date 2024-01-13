@@ -1,0 +1,30 @@
+In VM Instance
+
+-- sudo apt-get update
+
+-- sudo apt-get install default-jdk
+
+-- export KAFKA_HOME=/home/aravind_jarpala/kafka_2.12-3.6.1
+
+-- ${KAFKA_HOME}/bin/zookeeper-server-start.sh \$\{KAFKA_HOME\}/config/zookeeper.properties > ${KAFKA_HOME}/logs/zookeeper.log 2>&1 &
+
+-- ${KAFKA_HOME}/bin/kafka-server-start.sh ${KAFKA_HOME}/config/server.properties > ${KAFKA_HOME}/logs/broker1.log 2>&1 &
+
+-- ${KAFKA_HOME}/bin/kafka-topics.sh --create  --bootstrap-server 34.93.176.161:9092 --replication-factor 1  --partitions 1 --topic TestTopic
+
+IN Local
+
+- Spark.conf.set("spark.sql.shuffle.partitions",1000).
+- Spark.conf.set("spark.sql.files.maxPartitionBytes", 1024 * 1024 * 128) — setting partition size as 128 MB
+
+KAFKA Commands
+
+- .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+- .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+- .\bin\windows\kafka-topics.bat --create --topic demo3 --bootstrap-server localhost:9092 --partitions 1
+
+- .\bin\windows\kafka-console-producer.bat --topic demo3 --bootstrap-server localhost:9092
+
+- .\bin/windows\kafka-console-consumer.bat --topic demo3 --from-beginning --bootstrap-server localhost:9092
